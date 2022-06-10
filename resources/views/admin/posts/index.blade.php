@@ -28,6 +28,7 @@
                         <button type="submit" class="btn btn-danger">Elimina Post</button>
                     </form>
                 </div>
+                
             </div>
             @endforeach
         </div>

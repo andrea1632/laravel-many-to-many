@@ -26,6 +26,23 @@
                         <label for="image">inserisci url dell'immagine</label>
                         <input type="text" name="image" placeholder="Inserisci immagine">
                     </div>
+                    
+                    <hr>
+                    <h4>TAGS:</h4>
+
+                    @foreach ( $tags as $tag )
+                        <div class="form-check form-check-inline">
+                            <input
+                                class="form-check-input"
+                                type="checkbox"
+                                id="tag-{{ $tag->id }}"
+                                value=" {{ $tag->id }} "
+                                name="tags[]"
+                                @if ( in_array($tag->id, old('tags', []) ) ) checked @endif
+                            >
+                            <label class="form-check-label" for="tag-{{ $tag->id }}">{{ $tag->label }}</label>
+                        </div>
+                    @endforeach
                     <button type="submit" class="btn btn-success">Crea Post</button>
                 </form>
             </div>
