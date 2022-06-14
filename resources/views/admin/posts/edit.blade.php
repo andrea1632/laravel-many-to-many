@@ -3,7 +3,7 @@
     <div class="container">
         <div class="row">
             <div class="col">
-                <form action="{{route('admin.posts.update', $post->id)}}" method="POST">
+                <form action="{{route('admin.posts.update', $post->id)}}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
                     <div class="form-group">
@@ -21,10 +21,8 @@
                         </textarea>
                     </div>
                     <div class="form-group">
-                        <label for="image">
-                            Modifica url immagine
-                        </label>
-                        <input type="text" name="image" value="{{old('image', $post->image)}}">
+                        <label for="image">inserisci immagine</label>
+                        <input type="file" name="image" class="form-control-file">
                     </div>
                     <button class="btn btn-success">Modifica</button>
                 </form>

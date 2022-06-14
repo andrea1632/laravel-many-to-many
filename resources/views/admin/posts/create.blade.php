@@ -3,7 +3,7 @@
     <div class="container">
         <div class="row">
             <div class="col">
-                <form action="{{route('admin.posts.store')}}" method="POST">
+                <form action="{{route('admin.posts.store')}}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
                         <label for="title">titolo</label>
@@ -23,8 +23,8 @@
                         </textarea>
                     </div>
                     <div class="form-group">
-                        <label for="image">inserisci url dell'immagine</label>
-                        <input type="text" name="image" placeholder="Inserisci immagine">
+                        <label for="image">inserisci immagine</label>
+                        <input type="file" name="image" class="form-control-file">
                     </div>
                     
                     <hr>
