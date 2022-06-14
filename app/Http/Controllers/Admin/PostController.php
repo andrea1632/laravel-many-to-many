@@ -11,6 +11,10 @@ use Illuminate\Support\Str;
 
 use Illuminate\Support\Facades\Storage;
 
+use Illuminate\Support\Facades\Auth;
+use App\Mail\CreateMail;
+
+
 
 class PostController extends Controller
 {
@@ -46,6 +50,7 @@ class PostController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
+        $user = Auth::user();
         $post = new Post();
         
         if(array_key_exists('image', $data)){
@@ -57,6 +62,9 @@ class PostController extends Controller
         $post->save();
         //controlla se esiste la key nell'array
         if ( array_key_exists( 'tags', $data ) )  $post->tags()->attach($data['tags']);
+
+        $mail = new CreateMail();
+        Mail::to($user->email)->send($mail);
 
         return redirect()->route('admin.posts.index' );
     }
